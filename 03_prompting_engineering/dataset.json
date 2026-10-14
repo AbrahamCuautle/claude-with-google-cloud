@@ -1,0 +1,39 @@
+[
+  {
+    "prompt_inputs": {
+      "content": "Recent analyses of carbon pricing mechanisms reveal complex interactions between market mechanisms and regulatory frameworks. The economic efficiency of cap-and-trade systems depends critically on accurate baseline emissions quantification, while simultaneously raising questions about distributional equity across industrial sectors. Concurrent research examining behavioral responses to carbon taxation demonstrates that price elasticity varies significantly with firm size and technological capacity, suggesting that uniform pricing approaches may inadvertently disadvantage smaller enterprises lacking capital for rapid decarbonization investments. These findings intersect with broader climate science literature emphasizing the urgency of emissions reductions, creating tension between economically optimal transition pathways and politically feasible policy implementation timelines."
+    },
+    "solution_criteria": [
+      "Extracts conceptual themes beyond surface-level keywords (e.g., 'market mechanisms', 'regulatory frameworks', 'distributional equity', 'technological capacity')",
+      "Identifies implicit interconnected topics that require inference from context",
+      "Returns results as a JSON array of strings"
+    ],
+    "task_description": "\n        Extract topics out of a passage of text from a scholarly article into a JSON array of strings.\n    ",
+    "scenario": "Testing with a passage containing implicit and subtle topics that require inference (e.g., an article on climate policy that discusses economics, environmental science, and political frameworks without explicitly naming each) to ensure the prompt extracts conceptual themes, not just obvious keywords"
+  },
+  {
+    "prompt_inputs": {
+      "content": "Recent advances in computational neuroscience have demonstrated how artificial neural networks can model biological synaptic plasticity mechanisms. We employed deep learning architectures to simulate long-term potentiation (LTP) in hippocampal circuits, integrating electrophysiological recordings with machine learning algorithms to predict dendritic spine dynamics. Our recurrent neural network, trained on calcium imaging data, achieved 94% accuracy in forecasting synaptic weight changes. These findings bridge molecular neurobiology\u2014including NMDA receptor activation and calcium influx\u2014with information theory, revealing how biological systems implement error correction principles similar to backpropagation. The study also addresses computational efficiency by comparing the energy expenditure of biological neurons against GPU-based implementations, suggesting evolutionary optimization of neural computation."
+    },
+    "solution_criteria": [
+      "Extracts all major disciplinary topics (neuroscience, machine learning/AI, biology, computational theory, and physics/energy) without combining them into single entries",
+      "Separates overlapping concepts into distinct topics (e.g., 'synaptic plasticity' distinct from 'neural networks', 'electrophysiology' distinct from 'deep learning')",
+      "Returns output as a valid JSON array of strings with no additional fields or metadata"
+    ],
+    "task_description": "\n        Extract topics out of a passage of text from a scholarly article into a JSON array of strings.\n    ",
+    "scenario": "Testing with a multi-disciplinary passage containing overlapping topics (e.g., a neuroscience article discussing both biological mechanisms and computational modeling) to verify the prompt correctly identifies and separates distinct but interrelated subject areas"
+  },
+  {
+    "prompt_inputs": {
+      "content": "Recent advances in CRISPR-Cas9 gene editing have demonstrated remarkable efficacy in correcting pathogenic mutations associated with \u03b2-thalassemia through ex vivo hematopoietic stem cell (HSC) modification. The mechanism involves site-specific double-strand breaks (DSBs) at the BCL11A locus, leveraging non-homologous end joining (NHEJ) to disrupt the \u03b3-globin silencer, thereby reactivating fetal hemoglobin (HbF) production. Concurrent RNA-sequencing analyses revealed significant upregulation of erythroid differentiation markers (CD71, GYPA) and hemoglobin subunits, while off-target assessment using whole-genome sequencing (WGS) and GUIDE-seq demonstrated minimal genotoxic effects. Clinical trials utilizing lentiviral transduction of modified HSCs showed sustained engraftment and transfusion independence in 90% of patients over 24 months, though immunogenicity concerns related to Cas9 protein persistence warranted investigation of alternative delivery modalities including adeno-associated virus (AAV) vectors."
+    },
+    "solution_criteria": [
+      "Extracts primary topics (e.g., CRISPR-Cas9, gene editing, \u03b2-thalassemia, HSC modification) as distinct items",
+      "Distinguishes primary topics from methodological details and technical acronyms (e.g., does not list WGS, NHEJ, or GUIDE-seq as separate primary topics unless contextually warranted)",
+      "Includes secondary but significant concepts (e.g., fetal hemoglobin reactivation, off-target assessment, immunogenicity) as relevant topics",
+      "Returns results in valid JSON array format with string elements"
+    ],
+    "task_description": "\n        Extract topics out of a passage of text from a scholarly article into a JSON array of strings.\n    ",
+    "scenario": "Testing with a dense, jargon-heavy passage from a specialized field (e.g., quantum physics or biochemistry) with embedded subtopics and technical acronyms to verify the prompt can parse complex domain-specific language and distinguish primary topics from secondary concepts or methodological details"
+  }
+]

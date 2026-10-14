@@ -1,0 +1,248 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Prompt Evaluation Report</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                margin: 0;
+                padding: 20px;
+                color: #333;
+            }
+            .header {
+                background-color: #f0f0f0;
+                padding: 20px;
+                border-radius: 5px;
+                margin-bottom: 20px;
+            }
+            .summary-stats {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .stat-box {
+                background-color: #fff;
+                border-radius: 5px;
+                padding: 15px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                flex-basis: 30%;
+                min-width: 200px;
+            }
+            .stat-value {
+                font-size: 24px;
+                font-weight: bold;
+                margin-top: 5px;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+            th {
+                background-color: #4a4a4a;
+                color: white;
+                text-align: left;
+                padding: 12px;
+            }
+            td {
+                padding: 10px;
+                border-bottom: 1px solid #ddd;
+                vertical-align: top;
+            }
+            tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+            .output-cell {
+                white-space: pre-wrap;
+            }
+            .score {
+                font-weight: bold;
+                padding: 5px 10px;
+                border-radius: 3px;
+                display: inline-block;
+            }
+            .score-high {
+                background-color: #c8e6c9;
+                color: #2e7d32;
+            }
+            .score-medium {
+                background-color: #fff9c4;
+                color: #f57f17;
+            }
+            .score-low {
+                background-color: #ffcdd2;
+                color: #c62828;
+            }
+            .output {
+                overflow: auto;
+                white-space: pre-wrap;
+            }
+
+            .output pre {
+                background-color: #f5f5f5;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                padding: 10px;
+                margin: 0;
+                font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+                font-size: 14px;
+                line-height: 1.4;
+                color: #333;
+                box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+                overflow-x: auto;
+                white-space: pre-wrap; 
+                word-wrap: break-word; 
+            }
+
+            td {
+                width: 20%;
+            }
+            .score-col {
+                width: 80px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Prompt Evaluation Report</h1>
+            <div class="summary-stats">
+                <div class="stat-box">
+                    <div>Total Test Cases</div>
+                    <div class="stat-value">3</div>
+                </div>
+                <div class="stat-box">
+                    <div>Average Score</div>
+                    <div class="stat-value">7.7 / 10</div>
+                </div>
+                <div class="stat-box">
+                    <div>Pass Rate (≥7)</div>
+                    <div class="stat-value">66.7%</div>
+                </div>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Scenario</th>
+                    <th>Prompt Inputs</th>
+                    <th>Solution Criteria</th>
+                    <th>Output</th>
+                    <th>Score</th>
+                    <th>Reasoning</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+            <tr>
+                <td>Testing with a multi-disciplinary passage containing overlapping topics (e.g., a neuroscience article discussing both biological mechanisms and computational modeling) to verify the prompt correctly identifies and separates distinct but interrelated subject areas</td>
+                <td class="prompt-inputs"><strong>content:</strong> Recent advances in computational neuroscience have demonstrated how artificial neural networks can model biological synaptic plasticity mechanisms. We employed deep learning architectures to simulate long-term potentiation (LTP) in hippocampal circuits, integrating electrophysiological recordings with machine learning algorithms to predict dendritic spine dynamics. Our recurrent neural network, trained on calcium imaging data, achieved 94% accuracy in forecasting synaptic weight changes. These findings bridge molecular neurobiology—including NMDA receptor activation and calcium influx—with information theory, revealing how biological systems implement error correction principles similar to backpropagation. The study also addresses computational efficiency by comparing the energy expenditure of biological neurons against GPU-based implementations, suggesting evolutionary optimization of neural computation.</td>
+                <td class="criteria">• Extracts all major disciplinary topics (neuroscience, machine learning/AI, biology, computational theory, and physics/energy) without combining them into single entries<br>• Separates overlapping concepts into distinct topics (e.g., 'synaptic plasticity' distinct from 'neural networks', 'electrophysiology' distinct from 'deep learning')<br>• Returns output as a valid JSON array of strings with no additional fields or metadata</td>
+                <td class="output"><pre>```json
+[
+  "computational neuroscience",
+  "artificial neural networks",
+  "synaptic plasticity",
+  "deep learning",
+  "long-term potentiation",
+  "hippocampal circuits",
+  "electrophysiological recordings",
+  "machine learning",
+  "dendritic spine dynamics",
+  "recurrent neural networks",
+  "calcium imaging",
+  "synaptic weight changes",
+  "molecular neurobiology",
+  "NMDA receptor activation",
+  "calcium influx",
+  "information theory",
+  "error correction",
+  "backpropagation",
+  "computational efficiency",
+  "energy expenditure",
+  "biological neurons",
+  "GPU-based implementations",
+  "evolutionary optimization"
+]
+```</pre></td>
+                <td class="score-col"><span class="score score-high">10</span></td>
+                <td class="reasoning">The solution fully satisfies all mandatory requirements: it is a valid JSON array containing only strings representing topics, with no extra commentary or metadata. The response contains only the JSON array as required. Regarding secondary criteria, the solution excellently extracts topics from all major disciplinary areas without inappropriate combining, and properly separates overlapping concepts into distinct entries. The granularity and specificity of topic extraction is appropriate for a scholarly article. The solution demonstrates strong understanding of the source material and appropriate topic extraction methodology.</td>
+            </tr>
+        
+            <tr>
+                <td>Testing with a passage containing implicit and subtle topics that require inference (e.g., an article on climate policy that discusses economics, environmental science, and political frameworks without explicitly naming each) to ensure the prompt extracts conceptual themes, not just obvious keywords</td>
+                <td class="prompt-inputs"><strong>content:</strong> Recent analyses of carbon pricing mechanisms reveal complex interactions between market mechanisms and regulatory frameworks. The economic efficiency of cap-and-trade systems depends critically on accurate baseline emissions quantification, while simultaneously raising questions about distributional equity across industrial sectors. Concurrent research examining behavioral responses to carbon taxation demonstrates that price elasticity varies significantly with firm size and technological capacity, suggesting that uniform pricing approaches may inadvertently disadvantage smaller enterprises lacking capital for rapid decarbonization investments. These findings intersect with broader climate science literature emphasizing the urgency of emissions reductions, creating tension between economically optimal transition pathways and politically feasible policy implementation timelines.</td>
+                <td class="criteria">• Extracts conceptual themes beyond surface-level keywords (e.g., 'market mechanisms', 'regulatory frameworks', 'distributional equity', 'technological capacity')<br>• Identifies implicit interconnected topics that require inference from context<br>• Returns results as a JSON array of strings</td>
+                <td class="output"><pre>```json
+[
+  "carbon pricing mechanisms",
+  "market mechanisms",
+  "regulatory frameworks",
+  "cap-and-trade systems",
+  "baseline emissions quantification",
+  "distributional equity",
+  "industrial sectors",
+  "carbon taxation",
+  "behavioral responses",
+  "price elasticity",
+  "firm size",
+  "technological capacity",
+  "uniform pricing approaches",
+  "small enterprises",
+  "decarbonization investments",
+  "climate science",
+  "emissions reductions",
+  "policy implementation",
+  "economic efficiency"
+]
+```</pre></td>
+                <td class="score-col"><span class="score score-high">8</span></td>
+                <td class="reasoning">The solution meets all mandatory requirements: it returns a valid JSON array of strings containing topics from the article, with no extra commentary. It successfully extracts conceptual themes beyond keywords and identifies interconnected topics requiring inference. However, it has minor deficiencies in comprehensiveness—several relevant topics mentioned in the passage are missing (transition pathways, political feasibility, capital constraints), and there is slight redundancy in how related concepts are represented. These are secondary criterion issues that don't violate mandatory requirements but prevent a perfect score.</td>
+            </tr>
+        
+            <tr>
+                <td>Testing with a dense, jargon-heavy passage from a specialized field (e.g., quantum physics or biochemistry) with embedded subtopics and technical acronyms to verify the prompt can parse complex domain-specific language and distinguish primary topics from secondary concepts or methodological details</td>
+                <td class="prompt-inputs"><strong>content:</strong> Recent advances in CRISPR-Cas9 gene editing have demonstrated remarkable efficacy in correcting pathogenic mutations associated with β-thalassemia through ex vivo hematopoietic stem cell (HSC) modification. The mechanism involves site-specific double-strand breaks (DSBs) at the BCL11A locus, leveraging non-homologous end joining (NHEJ) to disrupt the γ-globin silencer, thereby reactivating fetal hemoglobin (HbF) production. Concurrent RNA-sequencing analyses revealed significant upregulation of erythroid differentiation markers (CD71, GYPA) and hemoglobin subunits, while off-target assessment using whole-genome sequencing (WGS) and GUIDE-seq demonstrated minimal genotoxic effects. Clinical trials utilizing lentiviral transduction of modified HSCs showed sustained engraftment and transfusion independence in 90% of patients over 24 months, though immunogenicity concerns related to Cas9 protein persistence warranted investigation of alternative delivery modalities including adeno-associated virus (AAV) vectors.</td>
+                <td class="criteria">• Extracts primary topics (e.g., CRISPR-Cas9, gene editing, β-thalassemia, HSC modification) as distinct items<br>• Distinguishes primary topics from methodological details and technical acronyms (e.g., does not list WGS, NHEJ, or GUIDE-seq as separate primary topics unless contextually warranted)<br>• Includes secondary but significant concepts (e.g., fetal hemoglobin reactivation, off-target assessment, immunogenicity) as relevant topics<br>• Returns results in valid JSON array format with string elements</td>
+                <td class="output"><pre>```json
+[
+  "CRISPR-Cas9 gene editing",
+  "β-thalassemia",
+  "hematopoietic stem cell (HSC) modification",
+  "double-strand breaks (DSBs)",
+  "BCL11A locus",
+  "non-homologous end joining (NHEJ)",
+  "γ-globin silencer",
+  "fetal hemoglobin (HbF)",
+  "RNA-sequencing",
+  "erythroid differentiation markers",
+  "CD71",
+  "GYPA",
+  "hemoglobin subunits",
+  "off-target assessment",
+  "whole-genome sequencing (WGS)",
+  "GUIDE-seq",
+  "genotoxic effects",
+  "clinical trials",
+  "lentiviral transduction",
+  "engraftment",
+  "transfusion independence",
+  "immunogenicity",
+  "Cas9 protein persistence",
+  "adeno-associated virus (AAV) vectors"
+]
+```</pre></td>
+                <td class="score-col"><span class="score score-low">5</span></td>
+                <td class="reasoning">The solution meets all mandatory requirements: it is valid JSON, contains only topic strings without commentary, and includes topics mentioned in the article. However, it significantly violates the secondary criteria regarding distinction between primary topics and methodological details. The criteria explicitly state that technical acronyms like WGS, NHEJ, and GUIDE-seq should not be listed as separate primary topics unless contextually warranted. Here, they are listed as standalone topics without justification. Similarly, CD71 and GYPA are specific markers rather than primary topics. The solution conflates comprehensiveness with appropriate topic extraction—including everything mentioned rather than extracting meaningful topics at the appropriate level of abstraction. A better solution would consolidate methodological details under broader categories (e.g., 'off-target assessment methods' rather than listing WGS and GUIDE-seq separately).</td>
+            </tr>
+        
+            </tbody>
+        </table>
+    </body>
+    </html>
+    

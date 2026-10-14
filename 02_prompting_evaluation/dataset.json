@@ -1,0 +1,32 @@
+[
+  {
+    "task": "Extract AWS EC2 instance IDs from CloudWatch log entries in the format 'instance-0a1b2c3d4e5f6g7h8'",
+    "format": "regex",
+    "solution_criteria": "Regex should match valid EC2 instance IDs starting with 'instance-' followed by 17 alphanumeric characters"
+  },
+  {
+    "task": "Parse an AWS S3 bucket policy JSON and extract all principals that have 's3:GetObject' permission",
+    "format": "python",
+    "solution_criteria": "Function should return a list of unique principals with GetObject permissions, handling wildcard principals correctly"
+  },
+  {
+    "task": "Create a JSON CloudFormation template for an AWS Lambda function with basic execution role and environment variables",
+    "format": "json",
+    "solution_criteria": "Valid CloudFormation template with proper resource definitions for Lambda function, IAM role, and environment variables"
+  },
+  {
+    "task": "Extract AWS ARN resource names from a comma-separated string of full ARNs like 'arn:aws:s3:::bucket-name/key'",
+    "format": "regex",
+    "solution_criteria": "Regex should capture the resource identifier portion of AWS ARNs while handling various AWS service formats"
+  },
+  {
+    "task": "Convert an AWS RDS database configuration dictionary to a JSON parameter group format",
+    "format": "python",
+    "solution_criteria": "Function should transform flat dictionary keys into AWS parameter group structure with proper naming conventions"
+  },
+  {
+    "task": "Create a JSON template for an AWS IAM policy that allows read-only access to specific S3 buckets",
+    "format": "json",
+    "solution_criteria": "Valid IAM policy JSON with correct statement structure, actions, resources, and effect permissions"
+  }
+]
